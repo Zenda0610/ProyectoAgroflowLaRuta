@@ -1,0 +1,176 @@
+{
+  "project": "Agroflow",
+  "version": "1.0.0",
+  "domain": "AgTech / Logistics Supply Chain",
+  "author": "David Leonardo Martínez",
+  "stakeholders": [
+    {
+      "id": "STK-01",
+      "name": "Pequeños productores agrícolas",
+      "role": "Proveedores primarios de la producción agrícola",
+      "action": "Cultivan, cosechan y suministran los productos al sistema de comercialización",
+      "benefit": "Incremento de ingresos, reducción de pérdidas postcosecha y acceso a mercados más amplios y eficientes"
+    },
+    {
+      "id": "STK-02",
+      "name": "Operadores logísticos y de transporte",
+      "role": "Facilitadores de la distribución dentro de la cadena de suministro",
+      "action": "Gestionan el transporte, almacenamiento y entrega oportuna de los productos",
+      "benefit": "Optimización de rutas, mayor eficiencia operativa y generación de ingresos por servicios logísticos"
+    },
+    {
+      "id": "STK-03",
+      "name": "Comerciantes y mercados locales",
+      "role": "Intermediarios comerciales y canales de venta",
+      "action": "Adquieren el producto y lo comercializan en mercados locales",
+      "benefit": "Mayor disponibilidad de productos, mejora en márgenes de comercialización y estabilidad en el abastecimiento"
+    },
+    {
+      "id": "STK-04",
+      "name": "Desarrolladores tecnológicos",
+      "role": "Proveedores de soluciones tecnológicas",
+      "action": "Diseñan, desarrollan e implementan plataformas digitales que optimizan la cadena de suministro",
+      "benefit": "Generación de valor a través de soluciones innovadoras, posicionamiento en el mercado y oportunidades de escalabilidad"
+    }
+  ],
+  "functional_modules": [
+    {
+      "module": "Autenticación y Perfiles",
+      "description": "Pilar de confianza y validación legal de usuarios.",
+      "features": [
+        "Registro diferenciado por rol (Agricultor, Comerciante, Transportista)",
+        "Validación de identidad con carga de documentos oficiales (Cédula, RUT/NIT, Licencia)",
+        "Gestión de perfil, geolocalización de predio y certificados de calidad"
+      ]
+    },
+    {
+      "module": "Agricultor (Oferta)",
+      "description": "Carga de productos y administración de inventarios agrícolas.",
+      "features": [
+        "Gestión de catálogo (fotos, descripción, cantidad disponible, unidad de medida, precio)",
+        "Panel de gestión de pedidos entrantes (aceptar/rechazar)",
+        "Programación de disponibilidad futura de cosechas (ej. 500kg de tomate en 2 semanas)"
+      ]
+    },
+    {
+      "module": "Comerciante (Demanda)",
+      "description": "Experiencia de compra y transparencia en el precio final.",
+      "features": [
+        "Marketplace con filtros por producto, ubicación de finca, fecha de cosecha y rango de precio",
+        "Carrito de compras con desglose transparente (Precio producto + Costo transporte)",
+        "Historial de compras y descarga de facturas digitales"
+      ]
+    },
+    {
+      "module": "Logística (Transportistas)",
+      "description": "Despacho ágil geolocalizado en tiempo real.",
+      "features": [
+        "Tablero de notificaciones de solicitudes de transporte cercanas",
+        "Gestión de rutas con origen en finca y destino en bodega",
+        "Control de estados de entrega (Producto recogido, En camino, Entregado)",
+        "Prueba de entrega digital mediante fotografía o firma"
+      ]
+    }
+  ],
+  "non_functional_requirements": {
+    "security": "Trazabilidad con registro de auditoría de transacciones durante 12 meses. Productores verificados para publicar.",
+    "performance": "Soporte para 10,000 usuarios concurrentes, carga en <2s en conexiones 3G, publicación en <1s, búsquedas en <500ms, degradación máxima del 10% en picos de cosecha.",
+    "usability": "Interfaz accesible para usuarios rurales con bajo nivel de alfabetización digital, máximo 5 pasos de publicación y uso intensivo de iconografía.",
+    "connectivity": "Modo offline-first con sincronización automática al recuperar conexión y disponibilidad mínima del 99.5% mensual.",
+    "environmental_impact": "Reducción de desperdicio de productos agrícolas en un 20% en el primer año y ventana promedio cosecha-venta inferior a 48 horas.",
+    "maintainability": "Estándares de Clean Code, cobertura de documentación mínima del 80% y ventanas de despliegue con interrupción máxima de 5 minutos.",
+    "reliability": "Tasa de error transaccional inferior al 1% con interoperabilidad para pasarelas de pago locales."
+  },
+  "epics": [
+    {
+      "id": 1,
+      "title": "Gestión de Oferta y Catálogo Agrícola",
+      "focus": "Creación y mantenimiento de la oferta del agricultor",
+      "stories": [
+        "Cargar fotos y descripción de productos",
+        "Establecer precios y cantidades mínimas",
+        "Actualización de stock en tiempo real",
+        "Sistema de inventario y oferta local",
+        "Filtro por cercanía y tipo de cultivo"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Marketplace y Abastecimiento (Tiendas)",
+      "focus": "Compra y relación comercial con múltiples productores",
+      "stories": [
+        "Pedidos a múltiples productores",
+        "Programación de pedidos anticipados",
+        "Notificaciones de compra al agricultor",
+        "Descubrimiento y atracción de productores locales"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Gestión Logística y Transporte",
+      "focus": "Asignación y operación del transporte",
+      "stories": [
+        "Alertas de pedidos disponibles (peso/volumen)",
+        "Negociación de tarifas de transporte",
+        "Disponibilidad de viajes para transportistas",
+        "Información de distancias para toma de decisiones"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Seguimiento y Geolocalización (Trazabilidad)",
+      "focus": "Monitoreo en tiempo real del traslado",
+      "stories": [
+        "Seguimiento en tiempo real del transportista",
+        "Cálculo de ETA (tiempo estimado de llegada)",
+        "Visualización de rutas en mapa"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Confianza y Transacciones",
+      "focus": "Cierre seguro de operaciones y reputación",
+      "stories": [
+        "Sistema de calificaciones mutuo (agricultor/transportista)",
+        "Historial de pedidos",
+        "Confirmación de entrega",
+        "Métodos de pago digitales"
+      ]
+    }
+  ],
+  "sprints": [
+    {
+      "sprint": 1,
+      "duration_days": 10,
+      "items": [
+        { "story": "Cargar productos (Fotos, descripción, stock)", "epic": "Oferta", "complexity": 8, "days": 2 },
+        { "story": "Registro de perfiles (Campesino, Tienda, Transportador)", "epic": "Sistema", "complexity": 8, "days": 2 },
+        { "story": "Catálogo de productos (Visualización y filtros básicos)", "epic": "Marketplace", "complexity": 2, "days": 2 },
+        { "story": "Geolocalización de Finca (Punto de recogida GPS)", "epic": "Seguimiento", "complexity": 1, "days": 2 },
+        { "story": "Carrito y Pedido (Crear la orden de compra)", "epic": "Marketplace", "complexity": 2, "days": 2 }
+      ]
+    },
+    {
+      "sprint": 2,
+      "duration_days": 10,
+      "items": [
+        { "story": "Alertas de carga (Notificar peso/volumen al transporte)", "epic": "Logística", "complexity": 1, "days": 2 },
+        { "story": "Mapa y Rutas (Integración con Google Maps/Waze)", "epic": "Seguimiento", "complexity": 1, "days": 3 },
+        { "story": "Identidad del Transportista (Foto y placa para seguridad)", "epic": "Seguridad", "complexity": 2, "days": 1 },
+        { "story": "Tracking en tiempo real (Ubicación de la mercancía)", "epic": "Seguimiento", "complexity": 13, "days": 2 },
+        { "story": "Prueba de entrega (Firma digital o foto de llegada)", "epic": "Seguridad", "complexity": 2, "days": 2 }
+      ]
+    },
+    {
+      "sprint": 3,
+      "duration_days": 10,
+      "items": [
+        { "story": "Pasarela de Pagos (Pago seguro y directo)", "epic": "Finanzas", "complexity": 40, "days": 3 },
+        { "story": "Liquidación de Comisiones (Reparto automático $)", "epic": "Finanzas", "complexity": 8, "days": 2 },
+        { "story": "Modo Offline (Sincronización básica sin internet)", "epic": "Sistema", "complexity": 3, "days": 2 },
+        { "story": "Sistema de Reputación (Calificaciones entre actores)", "epic": "Seguridad", "complexity": 2, "days": 1 },
+        { "story": "Interfaz Minimalista (Ajuste de usabilidad rural)", "epic": "Sistema", "complexity": 1, "days": 2 }
+      ]
+    }
+  ]
+}
